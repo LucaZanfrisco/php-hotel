@@ -38,6 +38,7 @@ $hotels = [
         'distance_to_center' => 50
     ],
 ];
+$park = $_GET['parking'];
 ?>
 
 <!DOCTYPE html>
@@ -79,9 +80,20 @@ $hotels = [
             <hr>
             <?php endforeach ?>
     </ul> -->
-    <table class="table">
+
+    <form action="index.php" class="mb-3 d-flex">
+        <select name="parking" id="parking" class="form-select ms-3">
+            <option value="none" selected>All</option>
+            <option value="0">Senza Parcheggio</option>
+            <option value="1">Con Parcheggio</option>
+        </select>
+        <button type="submit" class="btn btn-primary mx-3">Invia</button>
+    </form>
+    <!-- Tabella che mostra la lista degli hotel in forma tabellare -->
+    <table class="table table-dark table-hover">
         <thead>
             <tr>
+                <th scope="col">#</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Descrizione</th>
                 <th scope="col">Parcheggio</th>
@@ -90,15 +102,19 @@ $hotels = [
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($hotels as $hotel): ?>
-                <tr>
-                    <?php foreach ($hotel as $value): ?>
+            <?php foreach ($hotels as $key => $hotel): ?>
+                <?php if($hotel['parking'] == $park || $park == 'none'): ?>
+                    <tr>
+                        <th scope="row"><?php echo $key ?></th>
+                        <?php foreach ($hotel as $value): ?>
                         <td><?php echo $value ?></td>
-                    <?php endforeach ?>
-                 </tr>   
+                        <?php endforeach ?>
+                    </tr>
+                <?php endif ?>   
             <?php endforeach ?>
         </tbody>
     </table>
+
 </body>
 
 </html>
