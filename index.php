@@ -48,6 +48,7 @@ $hotels = [
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 
 <body>
@@ -68,7 +69,7 @@ $hotels = [
     </ul> -->
 
     <!-- Metodo 2 per mostrare la lista di hotel -->
-    <ul>
+    <!-- <ul>
         <?php foreach($hotels as $hotel): ?>
             <li>
                 <?php foreach ($hotel as $value): ?>
@@ -77,7 +78,27 @@ $hotels = [
             <?php endforeach ?>
             <hr>
             <?php endforeach ?>
-    </ul>
+    </ul> -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Descrizione</th>
+                <th scope="col">Parcheggio</th>
+                <th scope="col">Voto</th>
+                <th scope="col">Distanza dal centro</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($hotels as $hotel): ?>
+                <tr>
+                    <?php foreach ($hotel as $value): ?>
+                        <td><?php echo $value ?></td>
+                    <?php endforeach ?>
+                 </tr>   
+            <?php endforeach ?>
+        </tbody>
+    </table>
 </body>
 
 </html>
